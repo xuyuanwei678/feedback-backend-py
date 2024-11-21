@@ -25,16 +25,21 @@ class UserRegisterRequest(BaseModel):
     age: int
     gender: str
     subject: str
+
 class Step1Request(BaseModel):
     user_id: int
     user_name: str
     start_time: str
+
 class SendMessageRequest(BaseModel):
     user_id: int
     role: str
     message: str
+
 class GetChatListRequest(BaseModel):
     user_id: int
+
+
 @router.post("/login")
 async def login(req: UserLoginRequest):
     try:
@@ -83,6 +88,7 @@ async def register(req: UserRegisterRequest):
         traceback.print_exc()
         return JSONResponse(content={"message": "注册失败", "status_code": 40300, "is_success": False}, status_code=500)
 
+
 @router.post("/begin_step1")
 async def beginStep1(req: Step1Request):
     try:
@@ -100,6 +106,7 @@ async def beginStep1(req: Step1Request):
         traceback.print_exc()
         return JSONResponse(content={"message": "注册失败", "status_code": 40300, "is_success": False}, status_code=500)
 
+
 @router.post("/send_message")
 async def sendMessage(req: SendMessageRequest):
     try:
@@ -116,6 +123,7 @@ async def sendMessage(req: SendMessageRequest):
     except Exception as e:
         traceback.print_exc()
         return JSONResponse(content={"message": "注册失败", "status_code": 40300, "is_success": False}, status_code=500)
+
 
 @router.post("/get_chatlist")
 async def getChatList(req: GetChatListRequest):
@@ -137,11 +145,14 @@ async def getChatList(req: GetChatListRequest):
         traceback.print_exc()
         return JSONResponse(content={"message": "注册失败", "status_code": 40300, "is_success": False}, status_code=500)
 
+
 # 新的聊天
 class NewChatRequest(BaseModel):
     user_id:int
     role:str
     content:str
+
+
 @router.post("/new_chat")
 async def getChatList(req: NewChatRequest):
     try:
@@ -155,9 +166,12 @@ async def getChatList(req: NewChatRequest):
     except Exception as e:
         traceback.print_exc()
         return JSONResponse(content={"message": "注册失败", "status_code": 40300, "is_success": False}, status_code=500)
+
 # 结束第一阶段
 class EndChatRequest(BaseModel):
     user_id:int
+
+    
 @router.post("/end_step1")
 async def getChatList(req: NewChatRequest):
     try:
@@ -171,4 +185,3 @@ async def getChatList(req: NewChatRequest):
     except Exception as e:
         traceback.print_exc()
         return JSONResponse(content={"message": "注册失败", "status_code": 40300, "is_success": False}, status_code=500)
-@
