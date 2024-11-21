@@ -1,0 +1,13 @@
+python-dotenv
+fastapi
+uvicorn
+pydantic
+pymysql
+openai
+aiomysql
+werkzeug
+redis
+numpy
+faiss-cpu
+jsonlines
+PyJWT
